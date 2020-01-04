@@ -1,0 +1,19 @@
+Allow users to provision additional drive - Windows - Naresh
+Opt-Out of Patching - Bharath
+Add CPU/Memory to VM  - Bharath
+Allow for restart of vsphere agent - Naresh
+Rubrik - Create catalog item to opt out - Bharath
+Update UI for VM Request for Auto Patching - Naresh
+Notify users that VM request will exceed current reservation - Naresh
+
+
+Initialize-Disk -Number 2; New-Partition –DiskNumber 2 -DriveLetter E –UseMaximumSize
+
+
+powershell;Initialize-Disk -Number {{diskNumber}}; New-Partition –DiskNumber {{diskNumber}} -DriveLetter {{driveLetter}} –UseMaximumSize
+
+tags = {
+  Name = "${var.instance_name}-${count.index}"
+  AutoDelete = "Yes"
+  Owner = "Naresh Madiraju"
+}

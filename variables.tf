@@ -23,5 +23,34 @@ variable "instance_name"{
 }
 
 variable "instance_count"{
-  default = 2
+  default = 1
+}
+
+variable "auto_delete" { default = "Yes"}
+variable "owner" { default = "Naresh Madiraju"}
+
+variable "global_tags" {
+    type = "map"
+    default = {
+        business_unit = "corp"
+        department =  "cloud-engineering",
+        team = "cloud-engineering",
+        cost_center ="100786",
+  }
+}
+
+variable "app_tags" {
+    type = "map"
+    default = {
+        app = "reporting-cto",
+        env = "development"
+  }
+}
+
+variable "opt_tags" {
+    type = "map"
+    default = {
+        maintenance_window = "Friday 03:00 AM - Friday 05:00 AM",
+        auto_approvals = "CORP, PACE, COSTOP"
+  }
 }

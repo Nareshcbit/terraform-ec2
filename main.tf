@@ -12,9 +12,18 @@ resource "aws_instance" "server" {
   ami           = "${data.aws_ami.latest-ubuntu.id}"
   instance_type = var.instance_type
 
-  tags = {
-    Name = "${var.instance_name}-${count.index}"
-  }
+
+
+  tags = "${merge(
+    var.global_tags,
+    var.app_tags,
+    var.opt_tags,
+    map(
+      "Name", "${var.instance_name}-${count.index}",
+      "autodelete", var.auto_delete,
+      "owner",var.owner
+    )
+  )}"
 
   lifecycle {
     ignore_changes = [
