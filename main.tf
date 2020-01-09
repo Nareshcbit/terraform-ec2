@@ -4,14 +4,25 @@ provider "aws"{
 
 }
 
+terraform {
+  backend "s3" {
+    # Replace this with your bucket name!
+    bucket         = "terraform-nxgcloud-infra-development"
+    key            = "global/infra/ec2.tfstate"
+    region         = "ap-south-1"
+  }
+}
+
 
 resource "aws_instance" "server" {
 
   count = var.instance_count
 
-  ami           = "${data.aws_ami.latest-ubuntu.id}"
-  instance_type = var.instance_type
+  ami                       = "${data.aws_ami.latest-ubuntu.id}"
+  instance_type             = var.instance_type
 
+  subnet_id                 = "subnet-03b9ccfcca3b1e63e"
+  vpc_security_group_ids     = ["sg-09a7330da211e9df7"]
 
 
   tags = "${merge(

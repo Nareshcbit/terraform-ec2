@@ -51,6 +51,6 @@ variable "opt_tags" {
     type = "map"
     default = {
         maintenance_window = "Friday 03:00 AM - Friday 05:00 AM",
-        auto_approvals = "CORP, PACE, COSTOP"
+        auto_approvals = "CORP, COSTOP"
   }
 }
