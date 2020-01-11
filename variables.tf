@@ -5,7 +5,7 @@ variable "region" {
 
 }
 
-variable vpc_id {}
+variable "vpc_id" {}
 
 variable "instance_ami" {
 
