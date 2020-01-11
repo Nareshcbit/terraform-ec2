@@ -11,9 +11,7 @@ resource "aws_instance" "server" {
 
 
   tags = "${merge(
-    var.global_tags,
-    var.app_tags,
-    var.opt_tags,
+    var.common_tags,,
     map(
       "Name", "${var.instance_name}-${count.index}",
       "autodelete", var.auto_delete,
@@ -26,25 +24,4 @@ resource "aws_instance" "server" {
       tags["Name"],ami,
     ]
   }
-}
-
-
-data "aws_ami" "latest-ubuntu" {
-most_recent = true
-owners = ["099720109477"] # Canonical
-
-  filter {
-      name   = "name"
-      values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
-  }
-
-  filter {
-      name   = "virtualization-type"
-      values = ["hvm"]
-  }
-}
-
-
-output "image_id" {
-    value = "${data.aws_ami.latest-ubuntu.id}"
 }
