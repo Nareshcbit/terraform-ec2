@@ -21,8 +21,8 @@ resource "aws_instance" "server" {
   ami                       = "${data.aws_ami.latest-ubuntu.id}"
   instance_type             = var.instance_type
 
-  subnet_id                 = "subnet-03b9ccfcca3b1e63e"
-  vpc_security_group_ids     = ["sg-09a7330da211e9df7"]
+  #subnet_id                 = "subnet-03b9ccfcca3b1e63e"
+  #vpc_security_group_ids     = ["sg-09a7330da211e9df7"]
 
 
   tags = "${merge(
