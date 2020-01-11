@@ -5,6 +5,8 @@ variable "region" {
 
 }
 
+variable vpc_id {}
+
 variable "instance_ami" {
 
   type = "string"
