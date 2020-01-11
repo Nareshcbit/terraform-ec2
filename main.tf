@@ -11,7 +11,7 @@ resource "aws_instance" "server" {
 
 
   tags = "${merge(
-    var.common_tags,,
+    var.common_tags,
     map(
       "Name", "${var.instance_name}-${count.index}",
       "autodelete", var.auto_delete,
