@@ -15,7 +15,7 @@ variable "auto_delete" { default = "Yes"}
 variable "owner" { default = "Naresh Madiraju"}
 
 variable "common_tags" {
-    type = "map"
+    type = map(string)
     default = {
         business_unit = "corp"
         department =  "cloud-engineering",

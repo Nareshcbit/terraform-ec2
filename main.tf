@@ -1,3 +1,18 @@
+provider "aws"{
+
+  region = var.region
+
+}
+
+terraform {
+  backend "s3" {
+    # Replace this with your bucket name!
+    bucket         = "terraform-nxgcloud-infra-development"
+    key            = "global/infra/ec2.tfstate"
+    region         = "ap-south-1"
+  }
+}
+
 
 resource "aws_instance" "server" {
 
